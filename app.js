@@ -7,8 +7,7 @@ app.set('view engine', 'ejs'); // view engine 'ejs'  sistema che gestirà le nos
 
 
 /*
-*Ejs uses by defalut the views in the 'views' folder
-*/
+ //Ejs uses by defalut the views in the 'views' folder
 
 app.get('/', function(req,res){
     // var objPassedToView = {user:"Great User", title:"homepage"}
@@ -17,12 +16,16 @@ app.get('/', function(req,res){
     res.render('index',{user:"Dido", title:"Test di esmepio"});
 });
 
+*/ // codice commentato dopo aver stabilito chi sarà il nostro index, cioè la pagina iniziale
+
+
 /**
  * Create the handler for login page
  */
-app.get('/login', function(req,res){
-    
-    res.render('login',{});
+//MODIFICHIAMO QUEST'HANDLER POICHE' LA NOSTRA PAGINA DI INDEX è LOGIN ,
+// COMMENTANDO app.get('/', ...){...}. Bastera togliere login e lasciare '/'
+app.get('/', function(req,res){
+     res.render('login',{});
 });
 
 
