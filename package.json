@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/eduardo1988/unicam2019#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "nodemon": "^1.18.10",
+    "sqlite3": "^4.0.6"
   }
 }
