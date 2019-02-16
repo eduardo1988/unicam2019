@@ -11,7 +11,31 @@
     <title>Students</title>
   </head>
   <body>
-    <h1>Benvenuto Utente <%=user%> </h1>
+    <div class='container'>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Cognome</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <% students.forEach(function(student){ %>
+            <tr>
+            
+                <td class="align-baseline"><%= student.id %></td>
+                <td class="align-top"><%= student.name %></td>
+                <td class="align-top"><%= student.surname %></td>
+              </tr>
+
+          <% }); %> 
+          
+         
+        </tbody>
+      </table>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

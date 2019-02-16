@@ -1,7 +1,7 @@
 console.log("start the server");
 
 //express-partials
-var partials = require ('express-partials');
+var partials = require('express-partials');
 const express = require('express'); // analogo alla import dipendenza  di java, dipendenza
 var bodyParser = require('body-parser'); // per usufruire della dipendenza body-parser va istanziata
 const app = express();      // viene istanziata express quindi il server
@@ -9,8 +9,8 @@ var  session = require('express-session'); // carico il modulo express-session c
 var cookieSession = require('cookie-session');
 var cookeParser = require('cookie-parser');
 
-//Require a module to connect to the database
-var sqlite = require(".module/sqlite.js");
+//Require a module to connect to the database, richiamiamo il modulo sqlite
+var sqllite = require("./module/sqlite.js");
 
 
 //Creo un Oggetto di utilità di accesso all'area amministratore
@@ -27,6 +27,7 @@ const admin_user = {
 app.set('view engine', 'ejs'); // view engine 'ejs'  sistema che gestirà le nostre viste
 app.use(bodyParser.json());     // dichiariamo cosa è necessario che deve accetare la mia app
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(partials());
 // qui nelle configurazioni va detto al server di usare il Cookie di sessione
 //poichè ricordando che con le richieste HTTP mutua la sessione attraverso i COOKIEs
 app.use(cookieSession({
@@ -108,7 +109,12 @@ app.get('/students',checkAuthentication,function(req,res){
     // qui esegue il render alla pagina students se e solo se 
     // è stato autenticato dalla funzione checkAuthentication
     // Load the students from database , in qst caso lo devo chiamare all'interno di NODEjs
-    res.render('students',admin_user);
+    sqllite.getStudents(function(students){ // richiamo il metodo di qst modulo  a cui passo il callback che prenderà come parametro students fornitogli all'interno della funzione getStudents di sqlite.js
+        res.render('students', {  // genero la mia view template passandogli
+            "students":students     // i dati in questo caso variabile students
+        });
+    });
+    
     
 });
 

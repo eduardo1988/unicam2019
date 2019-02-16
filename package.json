@@ -23,6 +23,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-partial": "^0.1.0",
+    "express-partials": "^0.3.0",
     "express-session": "^1.15.6",
     "nodemon": "^1.18.10",
     "sqlite3": "^4.0.6"
